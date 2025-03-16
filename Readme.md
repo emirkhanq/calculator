@@ -45,12 +45,14 @@ Notes:
 
 
 ### My Challenges and How I decide it.
+
 1. My first problem:
 ![img_3.png](img_3.png)
 
 When you divide to zero, you get in result:infinity. But, of course, according to Java this answer is correct, but i should make a calculator.
 
 Decision: So, i just add condition before a dividing, which will throw an error and not perform the calculation if the divisor is zero.
+
 2. My second problem:
 ![img_4.png](img_4.png)
 
