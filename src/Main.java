@@ -60,31 +60,31 @@ public class Main {
             double parseTerm() throws Exception {
                 double x = parseFactor();
                 for (;;) {
-                    if (eat('*')) x *= parseFactor(); // multiplication
+                    if (eat('*')) x *= parseFactor(); 
                     else if (eat('/')) {
                         double divisor = parseFactor();
                         if (divisor == 0) {
                             throw new Exception("Division by zero is not allowed.");
                         }
-                        x /= divisor; // division
-                    } else if (eat('%')) x %= parseFactor(); // modulus
+                        x /= divisor; 
+                    } else if (eat('%')) x %= parseFactor(); 
                     else return x;
                 }
             }
 
             double parseFactor() throws Exception {
-                if (eat('+')) return parseFactor(); // unary plus
-                if (eat('-')) return -parseFactor(); // unary minus
+                if (eat('+')) return parseFactor(); 
+                if (eat('-')) return -parseFactor(); 
 
                 double x;
                 int startPos = this.pos;
-                if (eat('(')) { // parentheses
+                if (eat('(')) { 
                     x = parseExpression();
                     if (!eat(')')) throw new Exception("Missing ')' ");
-                } else if ((ch >= '0' && ch <= '9') || ch == '.') { // numbers
+                } else if ((ch >= '0' && ch <= '9') || ch == '.') { 
                     while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
                     x = Double.parseDouble(expression.substring(startPos, this.pos));
-                } else if (ch >= 'a' && ch <= 'z') { // functions
+                } else if (ch >= 'a' && ch <= 'z') { 
                     while (ch >= 'a' && ch <= 'z') nextChar();
                     String func = expression.substring(startPos, this.pos);
                     x = parseFactor();
@@ -98,7 +98,7 @@ public class Main {
                     throw new Exception("Unexpected: " + (char)ch);
                 }
 
-                if (eat('^')) x = Math.pow(x, parseFactor()); // exponentiation
+                if (eat('^')) x = Math.pow(x, parseFactor()); 
 
                 return x;
             }
